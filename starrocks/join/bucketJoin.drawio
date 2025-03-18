@@ -1,9 +1,141 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.1">
   <diagram name="第 1 页" id="FbK0Zp9SAeHkoOLzZP72">
-    <mxGraphModel>
+    <mxGraphModel dx="1434" dy="738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="WvAUzHItSOVLICaFslKt-1" value="StarRocks的Bucket Join实现原理" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="164" y="30" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-2" value="Bucket Join：基于相同的Bucket键预先分桶，减少shuffle开销" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="80" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-3" value="数据预分桶阶段（建表时指定）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="120" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-4" value="表A - 按订单ID分桶" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="160" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-5" value="CREATE TABLE orders (&#xa;  order_id INT,&#xa;  customer_id INT,&#xa;  amount DECIMAL,&#xa;  ...&#xa;) &#xa;DISTRIBUTED BY HASH(order_id) &#xa;BUCKETS 3;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="160" y="190" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-6" value="表B - 按相同订单ID分桶" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="490" y="160" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-7" value="CREATE TABLE order_items (&#xa;  item_id INT,&#xa;  order_id INT,&#xa;  product_id INT,&#xa;  ...&#xa;) &#xa;DISTRIBUTED BY HASH(order_id) &#xa;BUCKETS 3;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="460" y="190" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-8" value="数据物理存储布局" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="310" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-9" value="表A - Bucket 1&#xa;(order_id hash % 3 = 0)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="160" y="360" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-10" value="表A - Bucket 2&#xa;(order_id hash % 3 = 1)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="160" y="440" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-11" value="表A - Bucket 3&#xa;(order_id hash % 3 = 2)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="160" y="520" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-12" value="表B - Bucket 1&#xa;(order_id hash % 3 = 0)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="460" y="360" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-13" value="表B - Bucket 2&#xa;(order_id hash % 3 = 1)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="460" y="440" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-14" value="表B - Bucket 3&#xa;(order_id hash % 3 = 2)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="460" y="520" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-15" value="查询执行阶段" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="600" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-16" value="SELECT o.order_id, o.customer_id, i.product_id&#xa;FROM orders o JOIN order_items i&#xa;ON o.order_id = i.order_id;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="280" y="640" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-17" value="&lt;span style=&quot;font-weight: 400;&quot;&gt;要求分桶列和桶数完全匹配，或者桶数是对方的倍数&lt;/span&gt;&lt;br&gt;自动应用 Bucket Join 策略" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="720" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=1;fillColor=#f8cecc;strokeColor=#b85450;" edge="1" source="WvAUzHItSOVLICaFslKt-16" target="WvAUzHItSOVLICaFslKt-17" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="730" as="sourcePoint" />
+            <mxPoint x="440" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-19" value="并行Join执行过程" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="790" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-20" value="节点1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="140" y="830" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-21" value="表A的Bucket 1与表B的Bucket 1在本地Join&#xa;无需数据移动，直接Join" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-22" value="节点2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="340" y="830" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-23" value="表A的Bucket 2与表B的Bucket 2在本地Join&#xa;无需数据移动，直接Join" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-24" value="节点3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="540" y="830" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-25" value="表A的Bucket 3与表B的Bucket 3在本地Join&#xa;无需数据移动，直接Join" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="880" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-26" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;jumpStyle=arc;jumpSize=6;" edge="1" source="WvAUzHItSOVLICaFslKt-20" target="WvAUzHItSOVLICaFslKt-21" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="820" as="sourcePoint" />
+            <mxPoint x="440" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-27" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;jumpStyle=arc;jumpSize=6;" edge="1" source="WvAUzHItSOVLICaFslKt-22" target="WvAUzHItSOVLICaFslKt-23" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="880" as="sourcePoint" />
+            <mxPoint x="230" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-28" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;jumpStyle=arc;jumpSize=6;" edge="1" source="WvAUzHItSOVLICaFslKt-24" target="WvAUzHItSOVLICaFslKt-25" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="880" as="sourcePoint" />
+            <mxPoint x="430" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-29" value="Bucket Join与传统Shuffle Join的数据移动对比" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="960" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-30" value="传统Shuffle Join" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="1000" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-31" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,iVBORw0KGgoAAAANSUhEUgAAAJYAAABQCAYAAADn1/VTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFc0lEQVR4nO2dPYhcRRTHf5tdE7OrrAnxI2LExthYGFDQwipgo42FYGWjhfgBChaCYKWNIIpgKihqYSmKhSBoYWNhI0QRJZj4FROzu8bIZvK+3OJM7jLZuXdm3nvvzbz5wzDMTObtZd7/zLvnnnNmoCiKoiiKoiiKoiiKoiiKEjZPuB5AM2LAKxHcAtwInAesKPOj9vr3gV/zDrTMXAy8Grg1MtHK70x+V97RlplgFOvuAXg4hitiQ/Q1Av9FkETmmFc4C/kcmMj7a1nFiQwXRvBocEJ1gvfW4Tznw9c3zoJYt0bwWHXC1Vcmgf1dZAXAYuFyIAhF2OwYONDFGwyjWM/H8FJ1YjQKHxmBXaU5Uf5PUF7mKjxUolj/RHCgCkGaBcJSrLWMjZ4pYTyV51ILB8JQrPMsvHeoZGGqhwNBKNamCPYMWYw6w4FgFOvSCPYO+6bOcCAIxVoTwTOzfLZTOFCUUwEp1pYYdjsYTFt/74SsJ1oXw14Xdx+DJgO+AC7K8+1Pu/qSGeiFA2mfkYFy4ajFO7lU8T49m89RMXsifHXF89hMeXEEr1c4l7mIge0xvCY9MF1jFsXitRheq3BO83EqggOjkLQvKpZnNtw7dv3Wk8MoFs/F8Hph0yqH7zLYH4OvLuTX1fBnsSAG3gF2OnxfZ3AW+CwDD5WXs6BYqznbgnwshs0Ox9cZOsA3Gfic0xBifjgQBeYPDyRwUE5KnWCE8xDdrhD2V+ADWJhYZFkPXQj85xEcBfZ1Ue6MACnTXRKdecQ2hQNkTYRNnjXnJDwD/F5wPNPA1wUdoxMOdJhNscaCE6pyGKgLCQb9YQxvOL/rcDnTOaS1pSRTsXjC1YUEh8wG3rF1mZl2qd62SX8H+LGg+fpUONClR7He99jWwNF0xTzgFNLc17ULO4lkFIptGb5Z0DxsbXDOUdgD4dU4XAkbufCdYBRKwgHXFysSzvIqFkJsdwvQ+HGYkQF+A3bNcX0vcKDkcdgkx5e9Vqx+O/5i+Z3ZHGYW8LfYuN0Qyj59mMeKZ0U4EBfYO5DACc/j6hevZPCliTcmkfikcLJ2oAQYxeLFFD6sYcVbhZd1HJHYj28+HMgi2JWEZMUaxWrJQiSBYyae+v0TJJe4KNE8FAM7TA5vAV87GMsZCUkpuVL+OWAiC5QZrJjCqpXQWiPKdFYGa1uBc0vg3RQedfD+Gax4uW6X4JUE9gvuS/V9JCjzTPqA2w7UJF/4rIRXMxFLrnGPZ7BddKZLOGBzIqm5XLJiKU6YkJ1KJPHfQ5YSiMi3SrIOAocKeN6s4UCvHcgFVixlPvpV0tzvWXZG4TfXFfjcC3FKOJCtxlQqZIeEA3JumKvHvg6HM7gnDz8HMx7YlcDTwDeFj/xcOGBTu6pYBXAsM7vP9M7c75FifSCGVw11oWmkcNBEC9QKCQeOZfCMc7eTcnEiZdYdYUADwwGbflHFKoFT4g/vdLmP6zAjYl7aTi6lTHwoHDBTmTU0xSqTbzLY7NMgR3h8X9qJpWw8BQwGUoSrYhXADyK6a3d4RRxnV4YQDngJB2wKc1WsAtmTwJZei91Vbk6ksC7vmLyHA6pYRfJLBneJb1QXTqVpfaJTsxAOKOUzLdbKA1Lek4cjKdybVq8aqliVcVhWsZvqEKwrFXKlitU8xiUcuDKGr0oOB7TG0kOOSC3uQHZuVOB5LRyYmFWKGmfY5hP5pNu9VbGc01UsZbx7Io6ZdNWpYimlMm7DAZuTfFUsZU7OhQM/l9REq4qluOJsBlskHCiqKl2zG5RgOJLBVjGzC962pIql+GBcLNHm7otWxVJ88jtwL9kWvKpYSgicAG4j0PiuPvwP8tT3RgwhL/sAAAAASUVORK5CYII=;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1040" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-32" value="Bucket Join" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="490" y="1000" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-33" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,iVBORw0KGgoAAAANSUhEUgAAAJYAAABQCAYAAADn1/VTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFrklEQVR4nO2dT4hcRRTGf5NxTWaziYlIjBLjH9CgIaKCBf4BQQRBUNBCwYCIB4+CFxEEQS96EFERRRBUggeJB8WDoCAGxWg0GKO7STSbrJKYZHdiJju/6YEqZtKT6e7Xr9/r6vfBMMzM9nTVq/rq1atX36sKiqIoiqIoiqIoiqIoiqIoSnm5wLUDMWgBZ4BjwE+uhxMTHwIzwLTrgYRAE5iRz3PAbcBpprjQGaAL3AbsEV+HzwvAb7huBHAZ8IhrnxKmZ4BFwBFgXQ9fzwJPAZ972KzO7V7g6RiEFRu/AL+L8H4GjgN/A+sj+loHjEl7HwKfevC5ynZgjMzjyEv61KBJIvglCX4mMCF1Hl2xVq6JKVZV7DspJvYE4KdrnpHFPtliXz9X5/GQqGPXzJgtgRjrFhKzRLHY90HgqoI+rgdmA/LRNT9JAhOEB7UlFvvbXZ69YYuaXWdFdgdkrAuJyVYqFvv2A1cW9O9mYDYwHy97J4CE4JIPY7HXJ3sL+rcROB2Yny47EoiRrsiyO4u4t0K/NgJnAvLPZbdF3F20SHHmlZh8iHlxUrsKOBWQb668GGMnUbDCzCrxWQffNgDHAvHLtbkIuxLfh4o9q8ToYt+2Ah8H4JPvhHIwxLbE9hiwJbIxkwwWw+uBS0ry6TJgX0QfsjnJo8DNCfdLRn5z/wXeq8CnDcDegHzKy7OiWHOTOdaQ0OJMOjIKbC7Zp43A3gB8MvJ8kYq3BPZVHkI641kxDzS5XyEXK/Jpg7Qna8BXXnwgJaJ/1Uqx0L2kAr/WAIcD8cvI40UNPM/wMBrZyCzidWOFfq2q0K8iRTjVsZJI0q+Vu94fArRrZGHfNuXNE0qRvSx8XbFfGyryK89VV1ThQIZqrHQYBW4u0b/NFfplcqDnTiVzrDQYAW4p0b91Ffu1JNe1Gqu+jAA3l+jfVRX7lZnlYZoK6s8I5e42rwvAr30qsVImVP+aAft1QCVWqoRa+Bwk/zpDcFkCPyucY4VqLM96a71KrFQJ1V97VLFUYw0zofobi8Q6oyxBqUAl1nQFbatipUqo/saisbQqnCph+Hs4lr5UYtWfWA6Jd8E+VayUCdXnMfVYgaCKlSZl+rubWCSWKlaaRPM3toq3KlbKhOpvFJKqTnushAlVOhxTxVKJlSqhzqFYfFYSK1SNdVAlVqqE6m8sEivUqnBUJVaqhOqvbkdSAiHGrKA01oESfQ6dEeC6Ev27VkmsZDEa5K4SDdwo+bcoJVbijAA3lWjgzRL9Lsq9JDJV0dF96XDPJVP2JfAKBi4FfnLtREn8AfwKvI5ZXBIcB4GRHt+vBeZL6Pg3yvq9qxxuFRIrg2zWv6TGHUfVWINNiGfWlyGxTvVsS0mHkD6BNJHHPktiLWfFKEk1VD/Sb1RiJZhQFXlm5k+/xDqeV6GSBCmsDc96L9VY9SWFPZRKgU6rKAUOPWQ67n8p9lM1VmpMUnxheZF8VuHnXZgcuX7l3VC4XfnhGMWnFb6Nud/6kVhHcfQTN0oywQfGwGnVWEqZ9NPpOA6sLrLnuhfvqvZKgzcotpJ0UR5TP8Q6hQo4JQwW6e84M6H7Pgy8VLDOjO5HSx/TICp5HgK+KFDvbU9t9iOxBPWxUmYe2E7+nZWP4+/8rZ4S6yBLf0lEqRFngLvIf0DhCv72wOeRWCfnYbN+LKlqTGFEdi+H5SaxMsHe2GC+D3vPPkxEsZQIOYV5cV8vbvXYbr/FUSMmgLwv7+bsQFHSZhrzrqlPPLTVKw49l9FUiTXY9FpEPiP5rYc2UoizFOO2PQPYrxU6SgL0klgZ5C8xqeZKm14SK4OFJZYvFGLpzjvFB70k1mnpFr2gEktJnfN2M85hfhFsAT8U8OFXn04pSiq0WPzhO99owClKrfgfFLo3NSgJV3UAAAAASUVORK5CYII=;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1040" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-34" value="数据移动对比：传统Shuffle Join需要将数据按Join键重新分布，&#xa;而Bucket Join由于数据已预先按相同键分桶，因此无需额外的数据移动，减少了网络传输" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="125" y="1160" width="590" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-35" value="StarRocks与Spark的Bucket Join对比" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="1210" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-36" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tbody&gt;&lt;tr style=&quot;background-color: rgb(240, 240, 240);&quot;&gt;&lt;th style=&quot;padding:8px;&quot;&gt;特性&lt;/th&gt;&lt;th style=&quot;padding:8px;&quot;&gt;StarRocks Bucket Join&lt;/th&gt;&lt;th style=&quot;padding:8px;&quot;&gt;Spark Bucketed Join&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;分桶策略&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;在创建表时通过DISTRIBUTED BY HASH指定分桶键和桶数&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;通过CLUSTERED BY语句在创建表时指定分桶列和桶数&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;自动检测&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;优化器自动检测分桶键匹配情况并应用桶连接策略&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;需要手动开启spark.sql.bucketing.autoBucketedJoin配置&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;执行机制&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;MPP模式下的并行执行，流水线处理&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;基于Spark的DAG执行模型，使用阶段划分&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;应用场景&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;适用于OLAP分析场景，针对分析型查询优化&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;适用于大规模批处理任务，更加通用&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;性能优势&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;结合向量化执行引擎和列式存储，OLAP场景下性能更优&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;依赖于Spark执行框架，通用性好但专业OLAP场景下性能较低&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;数据一致性要求&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;要求分桶列和桶数完全匹配，或者桶数是对方的倍数&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;要求分桶列和桶数完全匹配，或者桶数是对方的倍数&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;维护成本&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;写入时自动维护分桶，操作透明&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;需要手动维护分桶状态，写入需要指定分桶信息&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="1300" width="590" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-37" value="结论：StarRocks的Bucket Join在OLAP场景中提供了更高的性能和更低的维护成本，特别适合需要频繁Join操作的分析查询。而Spark的Bucketed Join则提供了更大的灵活性，适用于更广泛的大数据处理场景。" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="110" y="1610" width="590" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-39" value="Bucket Join使用条件和限制" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="119" y="1690" width="590" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-40" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; style=&quot;width:100%;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background-color:#f0f0f0;&quot;&gt;&lt;th style=&quot;padding:8px;&quot;&gt;条件/限制&lt;/th&gt;&lt;th style=&quot;padding:8px;&quot;&gt;StarRocks&lt;/th&gt;&lt;th style=&quot;padding:8px;&quot;&gt;Spark&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;分桶键匹配&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;Join条件必须与分桶键完全匹配&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;Join条件必须与CLUSTERED BY指定的列匹配&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;桶数量要求&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;参与Join的表必须有相同的桶数量&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;桶数相同或是倍数关系也可以应用&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;Join类型限制&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;支持等值Join&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;仅支持等值Join&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:8px;&quot;&gt;数据倾斜处理&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;通过动态分区剪枝和并行度调整减轻数据倾斜&lt;/td&gt;&lt;td style=&quot;padding:8px;&quot;&gt;可能需要手动处理数据倾斜问题&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize:12;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1760" width="590" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="WvAUzHItSOVLICaFslKt-41" value="Bucket Join的优势：预分桶策略显著减少了数据重分布开销，使Join操作更高效。&#xa;StarRocks针对OLAP场景的优化使其在分析查询中表现出色，而Spark的实现则提供了更广泛的应用场景。" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize:14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="110" y="1940" width="590" height="50" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
