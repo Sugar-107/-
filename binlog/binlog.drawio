@@ -1,223 +1,271 @@
 <mxfile host="app.diagrams.net" modified="2023-11-20T10:55:23.456Z" agent="Mozilla/5.0" etag="abcde12345" version="21.7.5" type="device">
   <diagram id="binlog-knowledge-diagram" name="Binlog知识图谱">
-    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         
-        <!-- Binlog主标题 -->
+        <!-- 主标题 -->
         <mxCell id="title" value="MySQL Binlog知识图谱" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="414" y="20" width="300" height="40" as="geometry" />
+          <mxGeometry x="264" y="30" width="300" height="40" as="geometry" />
         </mxCell>
         
         <!-- Binlog核心节点 -->
         <mxCell id="binlog-core" value="Binlog&lt;br&gt;(二进制日志)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=16;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="484" y="80" width="160" height="60" as="geometry" />
+          <mxGeometry x="334" y="80" width="160" height="60" as="geometry" />
         </mxCell>
         
-        <!-- 第一部分：Binlog记录内容 -->
+        <!-- 连接线 - 到各主题区域 -->
+        <mxCell id="conn-binlog-content" value="" style="endArrow=classic;html=1;rounded=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="binlog-core">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="420" as="sourcePoint" />
+            <mxPoint x="160" y="180" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="160" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn-binlog-format" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="binlog-core">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="420" as="sourcePoint" />
+            <mxPoint x="414" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="conn-binlog-flinkcdc" value="" style="endArrow=classic;html=1;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="binlog-core">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="420" as="sourcePoint" />
+            <mxPoint x="670" y="180" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="670" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 第一部分：Binlog记录内容 - 使用图标更美观的表示 -->
         <mxCell id="content-title" value="Binlog记录内容" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="180" y="170" width="160" height="30" as="geometry" />
+          <mxGeometry x="80" y="180" width="160" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-1" value="数据变更事件(DML)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="100" y="220" width="160" height="40" as="geometry" />
+        <!-- 使用图标表示的六边形结构 -->
+        <mxCell id="content-hexagon" value="" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=70;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="80" y="230" width="160" height="140" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-1-example" value="INSERT: 插入新记录&lt;br&gt;UPDATE: 修改已有记录&lt;br&gt;DELETE: 删除现有记录&lt;br&gt;示例: INSERT INTO users (id, name) VALUES (1, 'Alice')" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="80" y="270" width="200" height="90" as="geometry" />
+        <mxCell id="content-dml" value="DML操作" style="shape=mxgraph.bpmn.data;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;whiteSpace=wrap;size=15;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="40" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-2" value="表结构变更(DDL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="100" y="370" width="160" height="40" as="geometry" />
+        <mxCell id="content-dml-desc" value="INSERT: 插入新记录&lt;br&gt;UPDATE: 修改记录&lt;br&gt;DELETE: 删除记录" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="30" y="300" width="100" height="60" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-2-example" value="CREATE: 创建表/索引&lt;br&gt;ALTER: 修改表结构&lt;br&gt;DROP: 删除表/索引&lt;br&gt;示例: ALTER TABLE users ADD COLUMN age INT" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="80" y="420" width="200" height="90" as="geometry" />
+        <mxCell id="content-ddl" value="DDL操作" style="shape=mxgraph.bpmn.data;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;whiteSpace=wrap;size=15;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="140" y="210" width="40" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-3" value="事务相关信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="100" y="520" width="160" height="40" as="geometry" />
+        <mxCell id="content-ddl-desc" value="CREATE/ALTER/DROP&lt;br&gt;表结构变更" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="180" y="225" width="100" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-3-example" value="BEGIN: 事务开始标记&lt;br&gt;COMMIT: 事务提交&lt;br&gt;ROLLBACK: 事务回滚&lt;br&gt;XID: 事务ID" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="80" y="570" width="200" height="80" as="geometry" />
+        <mxCell id="content-transaction" value="事务信息" style="shape=mxgraph.bpmn.data;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;whiteSpace=wrap;size=15;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="230" y="250" width="40" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-4" value="执行时间戳" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="300" y="220" width="160" height="40" as="geometry" />
+        <mxCell id="content-transaction-desc" value="BEGIN/COMMIT&lt;br&gt;ROLLBACK/XID" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="230" y="300" width="90" height="60" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-4-example" value="记录每个事件的执行时间&lt;br&gt;格式: Unix时间戳&lt;br&gt;用于复制过程中的时间点恢复" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="290" y="270" width="180" height="70" as="geometry" />
+        <mxCell id="content-timestamp" value="时间戳" style="shape=mxgraph.bpmn.data;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;whiteSpace=wrap;size=15;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="350" width="40" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-5" value="操作类型(INSERT/&lt;br&gt;UPDATE/DELETE)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="300" y="350" width="160" height="40" as="geometry" />
+        <mxCell id="content-timestamp-desc" value="执行时间&lt;br&gt;(Unix时间戳)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="30" y="400" width="80" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-5-example" value="使用事件类型标识符表示不同操作&lt;br&gt;例如: WRITE_ROWS_EVENT (插入)&lt;br&gt;UPDATE_ROWS_EVENT (更新)&lt;br&gt;DELETE_ROWS_EVENT (删除)" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="290" y="400" width="180" height="90" as="geometry" />
+        <mxCell id="content-operation" value="操作类型" style="shape=mxgraph.bpmn.data;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;whiteSpace=wrap;size=15;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="140" y="350" width="40" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-6" value="服务器ID" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="300" y="500" width="160" height="40" as="geometry" />
+        <mxCell id="content-operation-desc" value="WRITE/UPDATE/&lt;br&gt;DELETE ROWS EVENT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="140" y="400" width="40" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="content-6-example" value="唯一标识产生Binlog的服务器&lt;br&gt;避免主从复制环境中的循环复制&lt;br&gt;在my.cnf中通过server-id设置" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="290" y="550" width="180" height="70" as="geometry" />
+        <mxCell id="content-server" value="服务器ID" style="shape=mxgraph.bpmn.data;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;whiteSpace=wrap;size=15;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="230" y="350" width="40" height="50" as="geometry" />
         </mxCell>
         
-        <!-- 第二部分：Binlog模式 -->
+        <mxCell id="content-server-desc" value="唯一标识&lt;br&gt;避免循环复制" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="230" y="400" width="80" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 示例说明 -->
+        <mxCell id="content-example-title" value="记录示例:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="440" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="content-example" value="DML: INSERT INTO users (id, name) VALUES (1, 'Alice');&lt;br&gt;DDL: ALTER TABLE users ADD COLUMN age INT;&lt;br&gt;事务: BEGIN; [SQL语句...]; COMMIT;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;size=15;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="460" width="220" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 第二部分：Binlog格式模式 - 使用表格展示 -->
         <mxCell id="format-title" value="Binlog格式模式" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="484" y="170" width="160" height="30" as="geometry" />
+          <mxGeometry x="334" y="180" width="160" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="format-1" value="STATEMENT" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="484" y="220" width="160" height="60" as="geometry" />
+        <!-- 表格头部 -->
+        <mxCell id="format-table-header1" value="模式名称" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#d5e8d4;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;strokeColor=#82b366;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="280" y="220" width="120" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="format-1-desc" value="记录SQL语句本身" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="484" y="290" width="160" height="20" as="geometry" />
+        <mxCell id="format-table-header2" value="记录内容" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#d5e8d4;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;strokeColor=#82b366;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="400" y="220" width="100" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="format-1-example" value="优点: 体积小，记录简洁&lt;br&gt;缺点: 依赖执行环境，不适用于&lt;br&gt;包含NOW()、UUID()等函数的查询&lt;br&gt;&lt;br&gt;示例: INSERT INTO t1 VALUES (1,2);&lt;br&gt;相比ROW模式占用空间更小" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="464" y="310" width="200" height="110" as="geometry" />
+        <mxCell id="format-table-header3" value="优缺点" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#d5e8d4;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;strokeColor=#82b366;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="220" width="100" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="format-2" value="ROW" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="484" y="430" width="160" height="60" as="geometry" />
+        <!-- STATEMENT模式行 -->
+        <mxCell id="format-statement-name" value="STATEMENT" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#f5f5f5;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#666666;fontStyle=1;fontSize=12;fontColor=#333333;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="250" width="120" height="70" as="geometry" />
         </mxCell>
         
-        <mxCell id="format-2-desc" value="记录行数据变化" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="484" y="500" width="160" height="20" as="geometry" />
+        <mxCell id="format-statement-desc" value="记录SQL语句本身" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#f5f5f5;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#666666;fontStyle=1;fontSize=10;fontColor=#333333;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="250" width="100" height="70" as="geometry" />
         </mxCell>
         
-        <mxCell id="format-2-example" value="优点: 记录实际数据变更，精确安全&lt;br&gt;缺点: 体积大，特别是大表批量操作时&lt;br&gt;&lt;br&gt;示例: 记录&lt;br&gt;更新前: (id=1, name='Alice', age=25)&lt;br&gt;更新后: (id=1, name='Alice', age=26)&lt;br&gt;而不仅仅是SQL语句" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="464" y="520" width="200" height="130" as="geometry" />
+        <mxCell id="format-statement-pros-cons" value="✓ 体积小&lt;br&gt;✓ 记录简洁&lt;br&gt;✗ 存在安全隐患&lt;br&gt;✗ 环境依赖" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#f5f5f5;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#666666;fontStyle=1;fontSize=10;align=left;spacingLeft=3;fontColor=#333333;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="250" width="100" height="70" as="geometry" />
         </mxCell>
         
-        <mxCell id="format-3" value="MIXED" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="484" y="660" width="160" height="60" as="geometry" />
+        <!-- ROW模式行 -->
+        <mxCell id="format-row-name" value="ROW" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#dae8fc;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="120" height="70" as="geometry" />
         </mxCell>
         
-        <mxCell id="format-3-desc" value="混合模式" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="484" y="730" width="160" height="20" as="geometry" />
+        <mxCell id="format-row-desc" value="记录行数据变化&lt;br&gt;(修改前/后)" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#dae8fc;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#6c8ebf;fontStyle=1;fontSize=10;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="320" width="100" height="70" as="geometry" />
         </mxCell>
         
-        <mxCell id="format-3-example" value="智能决策使用的格式:&lt;br&gt;- 安全SQL使用STATEMENT格式&lt;br&gt;- 不安全SQL（如使用UUID()、NOW()等）&lt;br&gt;  自动切换为ROW格式&lt;br&gt;&lt;br&gt;结合了两种模式的优点，平衡体积和安全性" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="464" y="750" width="200" height="130" as="geometry" />
+        <mxCell id="format-row-pros-cons" value="✓ 精确安全&lt;br&gt;✓ 适用所有SQL&lt;br&gt;✗ 体积大&lt;br&gt;✗ 批量操作慢" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#dae8fc;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#6c8ebf;fontStyle=1;fontSize=10;align=left;spacingLeft=3;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="320" width="100" height="70" as="geometry" />
         </mxCell>
         
-        <!-- 第三部分：FlinkCDC监听 -->
+        <!-- MIXED模式行 -->
+        <mxCell id="format-mixed-name" value="MIXED" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#e1d5e7;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#9673a6;fontStyle=1;fontSize=12;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="390" width="120" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="format-mixed-desc" value="智能选择&lt;br&gt;STATEMENT或ROW" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#e1d5e7;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#9673a6;fontStyle=1;fontSize=10;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="390" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="format-mixed-pros-cons" value="✓ 平衡安全性&lt;br&gt;✓ 平衡体积&lt;br&gt;✗ 复杂性增加&lt;br&gt;✗ 部分场景体积大" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#e1d5e7;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#9673a6;fontStyle=1;fontSize=10;align=left;spacingLeft=3;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="390" width="100" height="70" as="geometry" />
+        </mxCell>
+        
+        <!-- 表格示例展示 -->
+        <mxCell id="format-example-title" value="格式示例比较:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="470" width="100" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="format-example" value="STATEMENT: INSERT INTO t1 VALUES (1,2);&lt;br&gt;&lt;br&gt;ROW: 包含具体数据，如 id=1, name='Alice'&lt;br&gt;     更新前值和更新后值都记录&lt;br&gt;&lt;br&gt;MIXED: 安全SQL用STATEMENT格式&lt;br&gt;      不安全SQL(含NOW()等)用ROW格式" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;size=15;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="490" width="320" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- 第三部分：FlinkCDC监听 - 使用流程图 -->
         <mxCell id="flinkcdc-title" value="FlinkCDC监听Binlog原理" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="784" y="170" width="240" height="30" as="geometry" />
+          <mxGeometry x="590" y="180" width="240" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-1" value="MySQL-CDC Connector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="814" y="220" width="180" height="50" as="geometry" />
+        <!-- FlinkCDC流程图 -->
+        <mxCell id="flinkcdc-start" value="MySQL Server&lt;br&gt;(写入Binlog)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="220" width="120" height="60" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-1-desc" value="1. 模拟MySQL从节点" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="1004" y="235" width="140" height="20" as="geometry" />
+        <mxCell id="flinkcdc-1" value="MySQL-CDC&lt;br&gt;Connector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="320" width="120" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-1-example" value="Flink SQL示例:&lt;br&gt;CREATE TABLE mysql_binlog (&lt;br&gt;  id INT,&lt;br&gt;  name STRING,&lt;br&gt;  age INT,&lt;br&gt;  PRIMARY KEY(id) NOT ENFORCED&lt;br&gt;) WITH (&lt;br&gt;  'connector' = 'mysql-cdc',&lt;br&gt;  'hostname' = 'localhost',&lt;br&gt;  'port' = '3306',&lt;br&gt;  'username' = 'root',&lt;br&gt;  'password' = 'password',&lt;br&gt;  'database-name' = 'mydb',&lt;br&gt;  'table-name' = 'users'&lt;br&gt;)" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="804" y="280" width="200" height="180" as="geometry" />
+        <mxCell id="flinkcdc-1-desc" value="1. 模拟MySQL从节点&lt;br&gt;建立数据库连接" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="780" y="330" width="120" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-2" value="Debezium引擎" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="814" y="470" width="180" height="50" as="geometry" />
+        <mxCell id="flinkcdc-2" value="Debezium引擎" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="410" width="120" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-2-desc" value="2. 解析Binlog事件" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="1004" y="485" width="140" height="20" as="geometry" />
+        <mxCell id="flinkcdc-2-desc" value="2. 解析Binlog事件&lt;br&gt;c(新增)u(更新)d(删除)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="780" y="420" width="120" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-2-example" value="Debezium将二进制日志解析为:&lt;br&gt;- 操作类型: c(创建), u(更新), d(删除)&lt;br&gt;- 详细数据: 修改前和修改后的值&lt;br&gt;- 元数据: 事件时间戳、来源表等" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="804" y="530" width="200" height="90" as="geometry" />
+        <mxCell id="flinkcdc-3" value="MySQL主从&lt;br&gt;复制协议" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="500" width="120" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-3" value="MySQL主从复制协议" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="814" y="630" width="180" height="50" as="geometry" />
+        <mxCell id="flinkcdc-3-desc" value="3. 以从服务器身份注册&lt;br&gt;接收主服务器推送" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="780" y="510" width="120" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-3-desc" value="3. 以从服务器身份注册" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="1004" y="645" width="140" height="20" as="geometry" />
+        <mxCell id="flinkcdc-4" value="数据变更&lt;br&gt;事件处理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="590" width="120" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-3-example" value="- 通过COM_BINLOG_DUMP命令请求binlog&lt;br&gt;- 持续接收主服务器推送的binlog事件&lt;br&gt;- 记住复制位置(binlog文件名和位置)以&lt;br&gt;  便断点续传" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="804" y="690" width="200" height="90" as="geometry" />
+        <mxCell id="flinkcdc-4-desc" value="4. 转换为Flink数据流&lt;br&gt;供下游系统处理" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="780" y="600" width="120" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-4" value="数据变更事件处理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=14;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="814" y="790" width="180" height="50" as="geometry" />
+        <mxCell id="flinkcdc-end" value="下游应用&lt;br&gt;(Kafka/ES等)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="680" width="120" height="60" as="geometry" />
         </mxCell>
         
-        <mxCell id="flinkcdc-4-desc" value="4. 转换为Flink数据流" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="1004" y="805" width="140" height="20" as="geometry" />
-        </mxCell>
-        
-        <mxCell id="flinkcdc-4-example" value="变更数据流应用场景:&lt;br&gt;- 实时数据同步到Kafka/ES等系统&lt;br&gt;- 实时计算和流处理&lt;br&gt;- 增量ETL处理&lt;br&gt;- 缓存更新/失效" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="804" y="850" width="200" height="90" as="geometry" />
-        </mxCell>
-        
-        <!-- 连接线 -->
-        <!-- Binlog到记录内容标题的连接 -->
-        <mxCell id="conn-binlog-content" value="" style="endArrow=classic;html=1;rounded=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="binlog-core" target="content-title">
+        <!-- 流程连接线 -->
+        <mxCell id="flow-start-1" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="flinkcdc-start" target="flinkcdc-1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="380" as="sourcePoint" />
-            <mxPoint x="650" y="330" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="260" y="110" />
-            </Array>
+            <mxPoint x="400" y="380" as="sourcePoint" />
+            <mxPoint x="450" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <!-- Binlog到格式模式标题的连接 -->
-        <mxCell id="conn-binlog-format" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="binlog-core" target="format-title">
+        <mxCell id="flow-1-2" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#9673a6;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="flinkcdc-1" target="flinkcdc-2">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="380" as="sourcePoint" />
-            <mxPoint x="650" y="330" as="targetPoint" />
+            <mxPoint x="400" y="380" as="sourcePoint" />
+            <mxPoint x="450" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <!-- Binlog到FlinkCDC标题的连接 -->
-        <mxCell id="conn-binlog-flinkcdc" value="" style="endArrow=classic;html=1;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="binlog-core" target="flinkcdc-title">
+        <mxCell id="flow-2-3" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#9673a6;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="flinkcdc-2" target="flinkcdc-3">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="380" as="sourcePoint" />
-            <mxPoint x="650" y="330" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="904" y="110" />
-            </Array>
+            <mxPoint x="400" y="380" as="sourcePoint" />
+            <mxPoint x="450" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <!-- FlinkCDC组件之间的连接 -->
-        <mxCell id="conn-flinkcdc-1-2" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="flinkcdc-1-example" target="flinkcdc-2">
+        <mxCell id="flow-3-4" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#9673a6;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="flinkcdc-3" target="flinkcdc-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="380" as="sourcePoint" />
-            <mxPoint x="650" y="330" as="targetPoint" />
+            <mxPoint x="400" y="380" as="sourcePoint" />
+            <mxPoint x="450" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="conn-flinkcdc-2-3" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="flinkcdc-2-example" target="flinkcdc-3">
+        <mxCell id="flow-4-end" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#b85450;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="flinkcdc-4" target="flinkcdc-end">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="380" as="sourcePoint" />
-            <mxPoint x="650" y="330" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        
-        <mxCell id="conn-flinkcdc-3-4" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="flinkcdc-3-example" target="flinkcdc-4">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="380" as="sourcePoint" />
-            <mxPoint x="650" y="330" as="targetPoint" />
+            <mxPoint x="400" y="380" as="sourcePoint" />
+            <mxPoint x="450" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
         <!-- 底部说明 -->
-        <mxCell id="footer-note" value="注：Binlog是MySQL重要的日志系统，用于数据复制、备份恢复和变更数据捕获(CDC)，默认格式为ROW" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="320" y="950" width="560" height="30" as="geometry" />
+        <mxCell id="footer-note" value="注：FlinkCDC通过Debezium实时捕获MySQL Binlog变更，将关系型数据库的事件变更转换为流处理数据，默认格式为ROW" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="134" y="780" width="560" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- FlinkCDC代码示例 -->
+        <mxCell id="flinkcdc-example" value="Flink SQL示例:&lt;br&gt;CREATE TABLE mysql_binlog (&lt;br&gt;  id INT, name STRING, age INT,&lt;br&gt;  PRIMARY KEY(id) NOT ENFORCED&lt;br&gt;) WITH (&lt;br&gt;  'connector' = 'mysql-cdc',&lt;br&gt;  'hostname' = 'localhost',&lt;br&gt;  'port' = '3306',&lt;br&gt;  'username' = 'root',&lt;br&gt;  'password' = '******',&lt;br&gt;  'database-name' = 'mydb',&lt;br&gt;  'table-name' = 'users'&lt;br&gt;)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;align=left;size=15;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="410" width="260" height="140" as="geometry" />
         </mxCell>
         
       </root>
