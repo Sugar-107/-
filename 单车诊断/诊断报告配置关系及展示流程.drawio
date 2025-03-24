@@ -1,0 +1,136 @@
+<mxfile host="65bd71144e">
+    <diagram id="诊断报告配置关系及展示流程" name="诊断报告配置关系及展示流程">
+        <mxGraphModel dx="1386" dy="815" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <!-- 标题 -->
+                <mxCell id="title" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;诊断报告配置关系&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="20" width="380" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 主要报告容器 -->
+                <mxCell id="report-container" value="&lt;b&gt;vehicle.diagnosis.template&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;align=center;verticalAlign=top;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="80" width="640" height="680" as="geometry"/>
+                </mxCell>
+                
+                <!-- 报告标题部分 -->
+                <mxCell id="report-header" value="&lt;b&gt;对车辆 $vin 在时间范围 $startTime ~ $endTime 之间车机系统的分析诊断报告如下：&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="120" width="560" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 车辆基本信息部分 -->
+                <mxCell id="vehicle-info" value="&lt;b&gt;车辆基本信息：&lt;br&gt;车机平台：$veh_platform； 车机配置：$car_config； 车辆用途：$purpose_describe；&lt;br&gt;车系名称：$veh_series_no_name； OTA版本：$firmware_version；&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="180" width="560" height="60" as="geometry"/>
+                </mxCell>
+                
+                <!-- AI内容区域 -->
+                <mxCell id="ai-content-area" value="&lt;b&gt;$aiContent&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;align=center;verticalAlign=top;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="260" width="560" height="200" as="geometry"/>
+                </mxCell>
+                
+                <!-- AI内容相关配置项 -->
+                <mxCell id="system-prompt" value="&lt;b&gt;MindGpt.vehicleDiagnosis.prompt&lt;br&gt;(system提示词)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="300" width="160" height="50" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="json-prompt" value="&lt;b&gt;MindGpt.vehicleDiagnosis.JSONprompt&lt;br&gt;(业务知识提示词)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="300" width="160" height="50" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="exclude-prompt" value="&lt;b&gt;vehicle.diagnosis.exclude.jsonprompt&lt;br&gt;(排除业务数据)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="370" width="160" height="50" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="model-selection" value="&lt;b&gt;vehicle.diagnosis.model&lt;br&gt;(选择模型)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="370" width="160" height="50" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="ai-result" value="&lt;b&gt;aiContent结果&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="440" width="340" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 异常诊断详情标题 -->
+                <mxCell id="detail-title" value="&lt;b&gt;### 异常诊断详情&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fillColor=#f5f5f5;strokeColor=#666666;strokeWidth=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="480" width="560" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 详情数据区域 -->
+                <mxCell id="detail-data-area" value="&lt;b&gt;$finalDetailData&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;align=center;verticalAlign=top;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="540" width="560" height="200" as="geometry"/>
+                </mxCell>
+                
+                <!-- 详情数据相关配置项 -->
+                <mxCell id="cpu-template" value="&lt;b&gt;cpu_diagnosis_report_template&lt;br&gt;(4个CPU数据模板)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="580" width="160" height="50" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="memory-template" value="&lt;b&gt;memory_diagnosis_report_template&lt;br&gt;(4个内存数据模板)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="580" width="160" height="50" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="custom-diagnosis" value="&lt;b&gt;crs.data.diagnosis.custom&lt;br&gt;(自定义诊断项)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="650" width="340" height="50" as="geometry"/>
+                </mxCell>
+                
+                <!-- 连接线 - 将配置项关联到对应区域 -->                
+                <!-- AI内容区域的连接线 -->
+                <mxCell id="conn-system-ai" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="system-prompt" target="ai-result">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="430" as="sourcePoint"/>
+                        <mxPoint x="440" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="conn-json-ai" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="json-prompt" target="ai-result">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="430" as="sourcePoint"/>
+                        <mxPoint x="440" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="conn-exclude-ai" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="exclude-prompt" target="ai-result">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="430" as="sourcePoint"/>
+                        <mxPoint x="440" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="conn-model-ai" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="model-selection" target="ai-result">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="430" as="sourcePoint"/>
+                        <mxPoint x="440" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 详情数据区域的连接线 -->
+                <mxCell id="conn-cpu-detail" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="cpu-template" target="custom-diagnosis">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="630" as="sourcePoint"/>
+                        <mxPoint x="440" y="580" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="conn-memory-detail" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="memory-template" target="custom-diagnosis">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="630" as="sourcePoint"/>
+                        <mxPoint x="440" y="580" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 标注说明 -->
+                <mxCell id="legend-config" value="&lt;b&gt;配置项&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="540" y="370" width="80" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend-result" value="&lt;b&gt;结果&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="540" y="410" width="80" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend-container" value="&lt;b&gt;容器&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="540" y="330" width="80" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
