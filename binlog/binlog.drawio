@@ -1,0 +1,271 @@
+<mxfile host="Electron" modified="2023-11-18T04:47:00.124Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="VY0DnVx1p1F6ZNELg7YS" version="22.0.3" type="device">
+  <diagram id="MySQL-Binlog-知识图谱" name="MySQL Binlog知识图谱">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 主标题 -->
+        <mxCell id="title" value="MySQL Binlog知识图谱" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="264" y="20" width="300" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Binlog基础知识容器 -->
+        <mxCell id="binlog-basics-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="760" height="330" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="binlog-basics-title" value="Binlog基础知识" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="339" y="90" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Binlog定义区域 -->
+        <mxCell id="binlog-definition" value="&lt;b&gt;二进制日志(Binary Log)&lt;/b&gt;&lt;br&gt;记录数据库所有的DDL和DML语句事件&lt;br&gt;以事件形式记录，还包含语句所执行的消耗时间" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="70" y="130" width="280" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Binlog用途区域 -->
+        <mxCell id="binlog-purpose" value="&lt;b&gt;Binlog主要用途&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="490" y="130" width="280" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="purpose-1" value="&lt;b&gt;数据恢复&lt;/b&gt;：基于时间点的还原" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="binlog-purpose">
+          <mxGeometry y="30" width="280" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="purpose-2" value="&lt;b&gt;数据复制&lt;/b&gt;：主从复制的基础" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="binlog-purpose">
+          <mxGeometry y="60" width="280" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="purpose-3" value="&lt;b&gt;审计&lt;/b&gt;：记录数据修改历史" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="binlog-purpose">
+          <mxGeometry y="90" width="280" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="purpose-4" value="&lt;b&gt;数据同步&lt;/b&gt;：CDC(变更数据捕获)工具基础" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="binlog-purpose">
+          <mxGeometry y="120" width="280" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Binlog记录内容区域 -->
+        <mxCell id="binlog-content" value="&lt;b&gt;Binlog记录内容&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="70" y="230" width="280" height="150" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="content-1" value="&lt;b&gt;DDL语句&lt;/b&gt;：CREATE、ALTER、DROP等" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="binlog-content">
+          <mxGeometry y="30" width="280" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="content-2" value="&lt;b&gt;DML语句&lt;/b&gt;：INSERT、UPDATE、DELETE" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="binlog-content">
+          <mxGeometry y="60" width="280" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="content-3" value="&lt;b&gt;事件元数据&lt;/b&gt;：事件发生时间戳、服务器ID" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="binlog-content">
+          <mxGeometry y="90" width="280" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="content-4" value="&lt;b&gt;二进制格式&lt;/b&gt;：不同格式取决于binlog模式" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="binlog-content">
+          <mxGeometry y="120" width="280" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Binlog模式区域 -->
+        <mxCell id="binlog-modes-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="430" width="760" height="320" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="binlog-modes-title" value="Binlog三种记录模式" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="339" y="440" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Statement模式 -->
+        <mxCell id="statement-mode" value="&lt;b&gt;STATEMENT模式&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="480" width="220" height="240" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="statement-desc" value="记录SQL语句原文" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1" vertex="1" parent="statement-mode">
+          <mxGeometry y="30" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="statement-pros" value="&lt;b&gt;优点：&lt;/b&gt;日志量小，节省空间" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="statement-mode">
+          <mxGeometry y="60" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="statement-cons" value="&lt;b&gt;缺点：&lt;/b&gt;可能导致主从不一致" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="statement-mode">
+          <mxGeometry y="90" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="statement-example-title" value="&lt;b&gt;示例：&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="statement-mode">
+          <mxGeometry y="120" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="statement-example" value="INSERT INTO users&lt;br&gt;(id, name, created_at)&lt;br&gt;VALUES (1, 'Zhang San',&lt;br&gt;NOW());" style="text;strokeColor=none;fillColor=#f5f5f5;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1" vertex="1" parent="statement-mode">
+          <mxGeometry y="150" width="220" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- ROW模式 -->
+        <mxCell id="row-mode" value="&lt;b&gt;ROW模式&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="310" y="480" width="220" height="240" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="row-desc" value="记录行的变化内容" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1" vertex="1" parent="row-mode">
+          <mxGeometry y="30" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="row-pros" value="&lt;b&gt;优点：&lt;/b&gt;记录精确，主从一致性高" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="row-mode">
+          <mxGeometry y="60" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="row-cons" value="&lt;b&gt;缺点：&lt;/b&gt;日志量大，占用空间多" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="row-mode">
+          <mxGeometry y="90" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="row-example-title" value="&lt;b&gt;示例：&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="row-mode">
+          <mxGeometry y="120" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="row-example" value="表users&lt;br&gt;行前镜像：{}(INSERT情况下)&lt;br&gt;行后镜像：{id=1, name='Zhang San', created_at='2023-11-17 12:30:45'}" style="text;strokeColor=none;fillColor=#f5f5f5;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1" vertex="1" parent="row-mode">
+          <mxGeometry y="150" width="220" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- MIXED模式 -->
+        <mxCell id="mixed-mode" value="&lt;b&gt;MIXED模式&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="560" y="480" width="220" height="240" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mixed-desc" value="混合STATEMENT和ROW" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1" vertex="1" parent="mixed-mode">
+          <mxGeometry y="30" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mixed-pros" value="&lt;b&gt;优点：&lt;/b&gt;智能平衡效率与安全性" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="mixed-mode">
+          <mxGeometry y="60" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mixed-cons" value="&lt;b&gt;策略：&lt;/b&gt;大多使用STATEMENT&lt;br&gt;但在特定情况下使用ROW" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="mixed-mode">
+          <mxGeometry y="90" width="220" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mixed-example-title" value="&lt;b&gt;切换案例：&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="mixed-mode">
+          <mxGeometry y="130" width="220" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mixed-example" value="使用UUID()、RAND()等不确定函数时&lt;br&gt;使用用户定义函数时&lt;br&gt;使用触发器、存储过程时" style="text;strokeColor=none;fillColor=#f5f5f5;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1" vertex="1" parent="mixed-mode">
+          <mxGeometry y="160" width="220" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 模式对比说明 -->
+        <mxCell id="binlog-size-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;opacity=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="770" width="760" height="140" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="binlog-size-title" value="模式对比：为什么ROW模式体积更大？" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="264" y="780" width="300" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="statement-size-example" value="&lt;b&gt;STATEMENT模式：&lt;/b&gt;&#xa;DELETE FROM users WHERE age &gt; 30;&#xa;(一条SQL语句，体积小)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="70" y="820" width="330" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="row-size-example" value="&lt;b&gt;ROW模式：&lt;/b&gt;&#xa;记录删除的每一行的完整数据(10000行用户数据)&#xa;每行包含用户所有字段值，体积非常大" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="440" y="820" width="330" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Flink CDC 监听Binlog容器 -->
+        <mxCell id="flinkcdc-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="930" width="760" height="380" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flinkcdc-title" value="Flink CDC监听Binlog原理" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="289" y="940" width="250" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Flink CDC架构图 -->
+        <mxCell id="mysql-server" value="MySQL服务器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="110" y="990" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="binlog-files" value="Binlog文件" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="130" y="1090" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="binlog-connection" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="mysql-server" target="binlog-files">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="1090" as="sourcePoint" />
+            <mxPoint x="440" y="1040" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="binlog-write" value="写入" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="binlog-connection">
+          <mxGeometry x="-0.2" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="flink-cdc-connector" value="Flink CDC Connector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="334" y="1050" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="debezium" value="Debezium" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="334" y="1150" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flink-app" value="Flink 应用程序" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="570" y="1050" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="connect-binlog-debezium" value="" style="endArrow=classic;html=1;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="binlog-files" target="debezium">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="1170" as="sourcePoint" />
+            <mxPoint x="440" y="1120" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="290" y="1130" />
+              <mxPoint x="290" y="1180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="read-binlog" value="读取" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="connect-binlog-debezium">
+          <mxGeometry x="0.0522" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="connect-debezium-connector" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="debezium" target="flink-cdc-connector">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="1170" as="sourcePoint" />
+            <mxPoint x="440" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="parse-events" value="解析事件" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="connect-debezium-connector">
+          <mxGeometry x="0.0667" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="connect-connector-app" value="" style="endArrow=classic;html=1;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="flink-cdc-connector" target="flink-app">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="1170" as="sourcePoint" />
+            <mxPoint x="440" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="stream-data" value="流式数据" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="connect-connector-app">
+          <mxGeometry x="-0.1053" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Flink CDC工作流程 -->
+        <mxCell id="flinkcdc-steps" value="&lt;b&gt;Flink CDC监听Binlog工作流程&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1210" width="620" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="step-1" value="1. Debezium以MySQL复制协议连接到MySQL服务器" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1" vertex="1" parent="flinkcdc-steps">
+          <mxGeometry y="30" width="620" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="step-2" value="2. 将binlog事件转换为CDC变更事件 → 3. Flink将变更事件转换为流式数据" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1" vertex="1" parent="flinkcdc-steps">
+          <mxGeometry y="60" width="620" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
