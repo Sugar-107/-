@@ -1,0 +1,809 @@
+<mxfile host="65bd71144e">
+    <diagram id="sql_execution_plan" name="SQL执行计划">
+        <mxGraphModel dx="1386" dy="815" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                
+                <!-- 标题 -->
+                <mxCell id="title" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;SQL执行计划流程图&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="20" width="230" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 0 -->
+                <mxCell id="fragment0" value="&lt;b&gt;PLAN FRAGMENT 0&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="70" width="420" height="120" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment0_output" value="&lt;b&gt;OUTPUT EXPRS:&lt;/b&gt; 112: expr | 106: max | 106: max | 107: max | 108: max | 113: round | 114: round | 115: round | 116: if | 117: if | 118: round | 119: if | 120: if | 121: round | 122: expr" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment0">
+                    <mxGeometry y="30" width="420" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment0_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; UNPARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment0">
+                    <mxGeometry y="60" width="420" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment0_sink" value="&lt;b&gt;RESULT SINK&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment0">
+                    <mxGeometry y="90" width="420" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点41: Project -->
+                <mxCell id="node41" value="41:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="510" y="210" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点40: AGGREGATE -->
+                <mxCell id="node40" value="40:AGGREGATE (merge finalize)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="465" y="290" width="250" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点39: EXCHANGE -->
+                <mxCell id="node39" value="39:EXCHANGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="510" y="370" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 0 连接 -->
+                <mxCell id="fragment0_to_node41" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment0_sink" target="node41">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="200" as="sourcePoint"/>
+                        <mxPoint x="600" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node41_to_node40" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node41" target="node40">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="350" as="sourcePoint"/>
+                        <mxPoint x="600" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node40_to_node39" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node40" target="node39">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="350" as="sourcePoint"/>
+                        <mxPoint x="600" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 1 -->
+                <mxCell id="fragment1" value="&lt;b&gt;PLAN FRAGMENT 1&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="430" width="420" height="90" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment1_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; HASH_PARTITIONED: 54: ota_version, 74: pre_beta_ota_version, 93: final_beta_ota_version" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment1">
+                    <mxGeometry y="30" width="420" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment1_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 39 UNPARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment1">
+                    <mxGeometry y="60" width="420" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点38: AGGREGATE -->
+                <mxCell id="node38" value="38:AGGREGATE (update serialize)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="465" y="540" width="250" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点37: Project -->
+                <mxCell id="node37" value="37:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="510" y="600" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点36: AGGREGATE -->
+                <mxCell id="node36" value="36:AGGREGATE (merge finalize)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="465" y="660" width="250" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点35: EXCHANGE -->
+                <mxCell id="node35" value="35:EXCHANGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="510" y="720" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 1 连接 -->
+                <mxCell id="fragment1_to_node38" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment1_sink" target="node38">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="550" as="sourcePoint"/>
+                        <mxPoint x="600" y="500" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node38_to_node37" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node38" target="node37">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="650" as="sourcePoint"/>
+                        <mxPoint x="600" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node37_to_node36" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node37" target="node36">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="650" as="sourcePoint"/>
+                        <mxPoint x="600" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node36_to_node35" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node36" target="node35">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="650" as="sourcePoint"/>
+                        <mxPoint x="600" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 2 -->
+                <mxCell id="fragment2" value="&lt;b&gt;PLAN FRAGMENT 2&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="780" width="420" height="110" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment2_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; HASH_PARTITIONED: 38: car_config, 34: veh_platform, 14: daily, 5: software_version" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment2">
+                    <mxGeometry y="30" width="420" height="40" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment2_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 35 HASH_PARTITIONED: 54: ota_version, 74: pre_beta_ota_version, 93: final_beta_ota_version" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment2">
+                    <mxGeometry y="70" width="420" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点34: AGGREGATE -->
+                <mxCell id="node34" value="34:AGGREGATE (update serialize)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="465" y="910" width="250" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点33: Project -->
+                <mxCell id="node33" value="33:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="510" y="970" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点32: HASH JOIN -->
+                <mxCell id="node32" value="32:HASH JOIN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="510" y="1030" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 2 连接 -->
+                <mxCell id="fragment2_to_node34" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment2_sink" target="node34">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="900" as="sourcePoint"/>
+                        <mxPoint x="600" y="850" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node34_to_node33" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node34" target="node33">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="1000" as="sourcePoint"/>
+                        <mxPoint x="600" y="950" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node33_to_node32" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node33" target="node32">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="1000" as="sourcePoint"/>
+                        <mxPoint x="600" y="950" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 节点31: EXCHANGE -->
+                <mxCell id="node31" value="31:EXCHANGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="650" y="1090" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点28: HASH JOIN -->
+                <mxCell id="node28" value="28:HASH JOIN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="510" y="1090" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="node32_to_node28" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node32" target="node28">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="1000" as="sourcePoint"/>
+                        <mxPoint x="600" y="950" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node32_to_node31" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node32" target="node31">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="1100" as="sourcePoint"/>
+                        <mxPoint x="600" y="1050" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="630" y="1070"/>
+                            <mxPoint x="730" y="1070"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 节点27: EXCHANGE -->
+                <mxCell id="node27" value="27:EXCHANGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="650" y="1150" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点24: HASH JOIN -->
+                <mxCell id="node24" value="24:HASH JOIN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="510" y="1150" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="node28_to_node24" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node28" target="node24">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="1100" as="sourcePoint"/>
+                        <mxPoint x="600" y="1050" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node28_to_node27" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node28" target="node27">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="1200" as="sourcePoint"/>
+                        <mxPoint x="600" y="1150" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="630" y="1130"/>
+                            <mxPoint x="730" y="1130"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 节点23: EXCHANGE -->
+                <mxCell id="node23" value="23:EXCHANGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="650" y="1210" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="node24_to_node23" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node24" target="node23">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="1300" as="sourcePoint"/>
+                        <mxPoint x="600" y="1250" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="630" y="1190"/>
+                            <mxPoint x="730" y="1190"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 节点20: Project -->
+                <mxCell id="node20" value="20:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="510" y="1210" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="node24_to_node20" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node24" target="node20">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="1240" as="sourcePoint"/>
+                        <mxPoint x="600" y="1190" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 数据交换连接 -->
+                <mxCell id="frag1_to_frag0" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;dashed=1;" edge="1" parent="1" source="fragment1" target="node39">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="530" as="sourcePoint"/>
+                        <mxPoint x="600" y="480" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="frag2_to_frag1" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;dashed=1;" edge="1" parent="1" source="fragment2" target="node35">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="550" y="830" as="sourcePoint"/>
+                        <mxPoint x="600" y="780" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 图例 -->
+                <mxCell id="legend" value="&lt;b&gt;图例&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="850" y="70" width="80" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="850" y="110" width="30" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend1_text" value="&lt;b&gt;PLAN FRAGMENT 0&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="110" width="140" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="850" y="150" width="30" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend2_text" value="&lt;b&gt;PLAN FRAGMENT 1&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="150" width="140" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="850" y="190" width="30" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend3_text" value="&lt;b&gt;PLAN FRAGMENT 2&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="190" width="140" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend4" value="" style="endArrow=classic;html=1;rounded=1;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="865" y="235" as="sourcePoint"/>
+                        <mxPoint x="865" y="275" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="legend4_text" value="&lt;b&gt;数据流&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="240" width="140" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend5" value="" style="endArrow=classic;html=1;rounded=1;strokeWidth=3;jumpStyle=arc;jumpSize=6;dashed=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="865" y="295" as="sourcePoint"/>
+                        <mxPoint x="865" y="335" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="legend5_text" value="&lt;b&gt;跨片段数据交换&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="300" width="140" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 3 -->
+                <mxCell id="fragment3" value="&lt;b&gt;PLAN FRAGMENT 3&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="1280" width="300" height="90" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment3_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; RANDOM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment3">
+                    <mxGeometry y="30" width="300" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment3_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 31 UNPARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment3">
+                    <mxGeometry y="60" width="300" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点30: Project -->
+                <mxCell id="node30" value="30:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="690" y="1380" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点29: OlapScanNode -->
+                <mxCell id="node29" value="29:OlapScanNode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="690" y="1440" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 3 连接 -->
+                <mxCell id="fragment3_to_node30" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment3_sink" target="node30">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="770" y="1380" as="sourcePoint"/>
+                        <mxPoint x="820" y="1330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node30_to_node29" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node30" target="node29">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="770" y="1440" as="sourcePoint"/>
+                        <mxPoint x="820" y="1390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 4 -->
+                <mxCell id="fragment4" value="&lt;b&gt;PLAN FRAGMENT 4&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="1280" width="300" height="90" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment4_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; RANDOM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment4">
+                    <mxGeometry y="30" width="300" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment4_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 27 UNPARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment4">
+                    <mxGeometry y="60" width="300" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点26: Project -->
+                <mxCell id="node26" value="26:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="370" y="1380" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点25: OlapScanNode -->
+                <mxCell id="node25" value="25:OlapScanNode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="370" y="1440" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 4 连接 -->
+                <mxCell id="fragment4_to_node26" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment4_sink" target="node26">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="450" y="1380" as="sourcePoint"/>
+                        <mxPoint x="500" y="1330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node26_to_node25" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node26" target="node25">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="450" y="1440" as="sourcePoint"/>
+                        <mxPoint x="500" y="1390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 5 -->
+                <mxCell id="fragment5" value="&lt;b&gt;PLAN FRAGMENT 5&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="1280" width="220" height="90" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment5_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; RANDOM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment5">
+                    <mxGeometry y="30" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment5_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 23 UNPARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment5">
+                    <mxGeometry y="60" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点22: Project -->
+                <mxCell id="node22" value="22:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="80" y="1380" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点21: OlapScanNode -->
+                <mxCell id="node21" value="21:OlapScanNode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="80" y="1440" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 5 连接 -->
+                <mxCell id="fragment5_to_node22" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment5_sink" target="node22">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="160" y="1380" as="sourcePoint"/>
+                        <mxPoint x="210" y="1330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node22_to_node21" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node22" target="node21">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="160" y="1440" as="sourcePoint"/>
+                        <mxPoint x="210" y="1390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 数据交换连接 -->
+                <mxCell id="frag3_to_frag2" value="" style="endArrow=classic;html=1;rounded=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;dashed=1;" edge="1" parent="1" source="fragment3" target="node31">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="770" y="1280" as="sourcePoint"/>
+                        <mxPoint x="820" y="1230" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="770" y="1250"/>
+                            <mxPoint x="730" y="1250"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="frag4_to_frag2" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;dashed=1;" edge="1" parent="1" source="fragment4" target="node27">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="450" y="1280" as="sourcePoint"/>
+                        <mxPoint x="500" y="1230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="frag5_to_frag2" value="" style="endArrow=classic;html=1;rounded=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;dashed=1;" edge="1" parent="1" source="fragment5" target="node23">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="160" y="1280" as="sourcePoint"/>
+                        <mxPoint x="210" y="1230" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="270" y="1260"/>
+                            <mxPoint x="730" y="1260"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 图例补充 -->
+                <mxCell id="legend6" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="850" y="230" width="30" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend6_text" value="&lt;b&gt;PLAN FRAGMENT 3&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="230" width="140" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend7" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="850" y="270" width="30" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend7_text" value="&lt;b&gt;PLAN FRAGMENT 4&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="270" width="140" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 6 -->
+                <mxCell id="fragment6" value="&lt;b&gt;PLAN FRAGMENT 6&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="1520" width="380" height="90" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment6_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; HASH_PARTITIONED: 14: daily, 7: vin, 8: mem_total, 5: software_version" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment6">
+                    <mxGeometry y="30" width="380" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment6_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 17 HASH_PARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment6">
+                    <mxGeometry y="60" width="380" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点16: AGGREGATE -->
+                <mxCell id="node16" value="16:AGGREGATE (update serialize)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="115" y="1630" width="250" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点15: Project -->
+                <mxCell id="node15" value="15:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="160" y="1690" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点14: HASH JOIN -->
+                <mxCell id="node14" value="14:HASH JOIN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="160" y="1750" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点13: EXCHANGE -->
+                <mxCell id="node13" value="13:EXCHANGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="300" y="1810" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点10: Project -->
+                <mxCell id="node10" value="10:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="160" y="1810" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点9: AGGREGATE -->
+                <mxCell id="node9" value="9:AGGREGATE (merge finalize)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="115" y="1870" width="250" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点8: EXCHANGE -->
+                <mxCell id="node8" value="8:EXCHANGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="160" y="1930" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 6 连接 -->
+                <mxCell id="fragment6_to_node16" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment6_sink" target="node16">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="1630" as="sourcePoint"/>
+                        <mxPoint x="290" y="1580" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node16_to_node15" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node16" target="node15">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="1690" as="sourcePoint"/>
+                        <mxPoint x="290" y="1640" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node15_to_node14" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node15" target="node14">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="1750" as="sourcePoint"/>
+                        <mxPoint x="290" y="1700" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node14_to_node13" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node14" target="node13">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="1810" as="sourcePoint"/>
+                        <mxPoint x="290" y="1760" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="280" y="1790"/>
+                            <mxPoint x="380" y="1790"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node14_to_node10" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node14" target="node10">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="1810" as="sourcePoint"/>
+                        <mxPoint x="290" y="1760" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node10_to_node9" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node10" target="node9">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="1870" as="sourcePoint"/>
+                        <mxPoint x="290" y="1820" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node9_to_node8" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node9" target="node8">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="1930" as="sourcePoint"/>
+                        <mxPoint x="290" y="1880" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 7 -->
+                <mxCell id="fragment7" value="&lt;b&gt;PLAN FRAGMENT 7&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="1520" width="220" height="90" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment7_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; RANDOM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment7">
+                    <mxGeometry y="30" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment7_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 13 UNPARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment7">
+                    <mxGeometry y="60" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点12: Project -->
+                <mxCell id="node12" value="12:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1630" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点11: OlapScanNode -->
+                <mxCell id="node11" value="11:OlapScanNode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1690" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 7 连接 -->
+                <mxCell id="fragment7_to_node12" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment7_sink" target="node12">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="1630" as="sourcePoint"/>
+                        <mxPoint x="620" y="1580" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node12_to_node11" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node12" target="node11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="1690" as="sourcePoint"/>
+                        <mxPoint x="620" y="1640" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 8 -->
+                <mxCell id="fragment8" value="&lt;b&gt;PLAN FRAGMENT 8&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="1750" width="220" height="90" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment8_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; HASH_PARTITIONED: 13: head_id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment8">
+                    <mxGeometry y="30" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment8_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 08 HASH_PARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment8">
+                    <mxGeometry y="60" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点7: AGGREGATE -->
+                <mxCell id="node7" value="7:AGGREGATE (update serialize)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="445" y="1860" width="250" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点6: Project -->
+                <mxCell id="node6" value="6:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1920" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点5: HASH JOIN -->
+                <mxCell id="node5" value="5:HASH JOIN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="1980" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点4: EXCHANGE -->
+                <mxCell id="node4" value="4:EXCHANGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="630" y="2040" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点1: EXCHANGE -->
+                <mxCell id="node1" value="1:EXCHANGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="2040" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 8 连接 -->
+                <mxCell id="fragment8_to_node7" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment8_sink" target="node7">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="1860" as="sourcePoint"/>
+                        <mxPoint x="620" y="1810" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node7_to_node6" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node7" target="node6">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="1920" as="sourcePoint"/>
+                        <mxPoint x="620" y="1870" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node6_to_node5" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node6" target="node5">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="1980" as="sourcePoint"/>
+                        <mxPoint x="620" y="1930" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node5_to_node4" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node5" target="node4">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="2040" as="sourcePoint"/>
+                        <mxPoint x="620" y="1990" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="610" y="2020"/>
+                            <mxPoint x="710" y="2020"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node5_to_node1" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node5" target="node1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="2040" as="sourcePoint"/>
+                        <mxPoint x="620" y="1990" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 9 -->
+                <mxCell id="fragment9" value="&lt;b&gt;PLAN FRAGMENT 9&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="1750" width="220" height="90" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment9_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; RANDOM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment9">
+                    <mxGeometry y="30" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment9_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 04 HASH_PARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment9">
+                    <mxGeometry y="60" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点3: Project -->
+                <mxCell id="node3" value="3:Project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="720" y="1860" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点2: OlapScanNode -->
+                <mxCell id="node2" value="2:OlapScanNode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="720" y="1920" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 9 连接 -->
+                <mxCell id="fragment9_to_node3" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment9_sink" target="node3">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="800" y="1860" as="sourcePoint"/>
+                        <mxPoint x="850" y="1810" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="node3_to_node2" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="node3" target="node2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="800" y="1920" as="sourcePoint"/>
+                        <mxPoint x="850" y="1870" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- PLAN FRAGMENT 10 -->
+                <mxCell id="fragment10" value="&lt;b&gt;PLAN FRAGMENT 10&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="2000" width="220" height="90" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment10_partition" value="&lt;b&gt;PARTITION:&lt;/b&gt; RANDOM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment10">
+                    <mxGeometry y="30" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="fragment10_sink" value="&lt;b&gt;STREAM DATA SINK EXCHANGE ID:&lt;/b&gt; 01 HASH_PARTITIONED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1" vertex="1" parent="fragment10">
+                    <mxGeometry y="60" width="220" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- 节点0: OlapScanNode -->
+                <mxCell id="node0" value="0:OlapScanNode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="720" y="2110" width="160" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Fragment 10 连接 -->
+                <mxCell id="fragment10_to_node0" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;" edge="1" parent="1" source="fragment10_sink" target="node0">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="800" y="2090" as="sourcePoint"/>
+                        <mxPoint x="850" y="2040" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 数据交换连接 -->
+                <mxCell id="frag7_to_frag6" value="" style="endArrow=classic;html=1;rounded=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;dashed=1;" edge="1" parent="1" source="fragment7" target="fragment6">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="1570" as="sourcePoint"/>
+                        <mxPoint x="550" y="1520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="frag9_to_frag8" value="" style="endArrow=classic;html=1;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;dashed=1;" edge="1" parent="1" source="fragment9" target="node4">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="800" y="1950" as="sourcePoint"/>
+                        <mxPoint x="850" y="1900" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="800" y="1980"/>
+                            <mxPoint x="750" y="1980"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+                <mxCell id="frag10_to_frag8" value="" style="endArrow=classic;html=1;rounded=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;jumpStyle=arc;jumpSize=6;dashed=1;" edge="1" parent="1" source="fragment10" target="node1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="680" y="2045" as="sourcePoint"/>
+                        <mxPoint x="660" y="2045" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                
+                <!-- 图例补充 -->
+                <mxCell id="legend8" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="850" y="310" width="30" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="legend8_text" value="&lt;b&gt;SQL操作节点&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="310" width="140" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile> 
